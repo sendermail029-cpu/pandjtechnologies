@@ -325,7 +325,7 @@ export function Header() {
 
   return (
     <>
-      <header data-dark={dark} className={`group/header relative z-40 ${dark ? "bg-[#060d18]" : "bg-white"}`}>
+      <header data-dark={dark} data-path={pathname} className={`group/header relative z-40 ${dark ? "bg-[#060d18]" : "bg-white"}`}>
         <div className="mx-auto flex h-[72px] max-w-[83rem] items-center justify-between px-6">
           <Logo badge={dark} />
 
