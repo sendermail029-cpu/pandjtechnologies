@@ -82,7 +82,7 @@ export function ApplyForm({ jobId, jobTitle, onCancel }: { jobId: string; jobTit
         </select>
       </div>
       <div className="sm:col-span-2">
-        <label htmlFor="resume" className={label}>CV / resume * <span className="font-normal text-slate">(PDF or Word, max 5 MB)</span></label>
+        <label htmlFor="resume" className={label}>CV / resume * <span className="font-normal text-slate">(PDF or Word, max 4 MB)</span></label>
         <label
           htmlFor="resume"
           className="flex cursor-pointer items-center gap-4 rounded-xl border-2 border-dashed border-line bg-paper px-5 py-5 transition hover:border-cobalt"

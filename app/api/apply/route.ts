@@ -5,7 +5,8 @@ import { randomBytes } from "crypto";
 import { addApplication, getJob, isAccepting, RESUMES } from "@/lib/jobs";
 import { salaryRanges } from "@/lib/salary";
 
-const MAX_BYTES = 5 * 1024 * 1024;
+// Vercel rejects request bodies over ~4.5 MB, so CVs are capped just under that
+const MAX_BYTES = 4 * 1024 * 1024;
 const ALLOWED: Record<string, string> = {
   "application/pdf": "pdf",
   "application/msword": "doc",
@@ -58,33 +59,41 @@ export async function POST(req: Request) {
 
   const file = form.get("resume");
   if (!(file instanceof File) || file.size === 0) return NextResponse.json({ error: "Attach your CV (PDF or Word)." }, { status: 400 });
-  if (file.size > MAX_BYTES) return NextResponse.json({ error: "Your CV must be 5 MB or smaller." }, { status: 400 });
+  if (file.size > MAX_BYTES) return NextResponse.json({ error: "Your CV must be 4 MB or smaller." }, { status: 400 });
   const ext = ALLOWED[file.type] ?? file.name.split(".").pop()?.toLowerCase() ?? "";
   if (!Object.values(ALLOWED).includes(ext)) return NextResponse.json({ error: "Upload your CV as a PDF, DOC or DOCX file." }, { status: 400 });
   const buf = Buffer.from(await file.arrayBuffer());
   if (!looksLike(ext, buf)) return NextResponse.json({ error: "That file doesn't look like a PDF or Word document." }, { status: 400 });
 
   const stored = `${randomBytes(12).toString("hex")}.${ext}`; // never trust the uploaded file name on disk
-  await fs.mkdir(RESUMES, { recursive: true });
-  await fs.writeFile(path.join(process.cwd(), "data", "resumes", stored), buf); // a fixed folder, so the build doesn't bundle the whole project
-
   const originalName = path.basename(file.name).replace(/[^\w.\- ]+/g, "_").slice(0, 120) || `cv.${ext}`;
-  await addApplication({
-    jobId: job.id,
-    jobTitle: job.title,
-    name,
-    email,
-    phone,
-    link,
-    message,
-    salary,
-    resume: { file: stored, name: originalName, type: file.type || "application/octet-stream" },
-  });
+
+  // save for the admin panel; hosts with a read-only disk (e.g. Vercel) can't, and then the email below carries it
+  let saved = false;
+  try {
+    await fs.mkdir(RESUMES, { recursive: true });
+    await fs.writeFile(path.join(process.cwd(), "data", "resumes", stored), buf); // a fixed folder, so the build doesn't bundle the whole project
+    await addApplication({
+      jobId: job.id,
+      jobTitle: job.title,
+      name,
+      email,
+      phone,
+      link,
+      message,
+      salary,
+      resume: { file: stored, name: originalName, type: file.type || "application/octet-stream" },
+    });
+    saved = true;
+  } catch (err) {
+    console.warn("application not saved to disk (read-only host?)", err instanceof Error ? err.message : err);
+  }
 
   // email copy to the hiring inbox, with the CV attached
   const key = process.env.RESEND_API_KEY;
   const to = process.env.CAREERS_TO;
   const from = process.env.CAREERS_FROM || "P & J Careers <onboarding@resend.dev>";
+  let emailed = false;
   if (key && to) {
     const rows: [string, string][] = [
       ["Role", job.title],
@@ -103,7 +112,7 @@ export async function POST(req: Request) {
       rows.map(([k, v]) => `<tr><td style="${cell};color:#5b6b84;width:40%">${esc(k)}</td><td style="${cell};font-weight:600">${esc(v)}</td></tr>`).join("") +
       `</table><h3 style="margin:20px 0 6px">Why this role</h3><p style="margin:0;white-space:pre-wrap">${esc(message || "(no message)")}</p>` +
       `<p style="margin:20px 0 0;color:#5b6b84;font-size:13px">CV attached: ${esc(originalName)}. Reply to this email to contact the candidate.</p></div>`;
-    await fetch("https://api.resend.com/emails", {
+    const sent = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -115,7 +124,17 @@ export async function POST(req: Request) {
         text: rows.map(([k, v]) => `${k}: ${v}`).join("\n") + `\n\n${message || "(no message)"}`,
         attachments: [{ filename: originalName, content: buf.toString("base64") }],
       }),
-    }).catch(() => {}); // the application is already saved in the admin panel; the email is a copy
+    }).catch(() => null);
+    emailed = !!sent?.ok;
+    if (sent && !sent.ok) console.error("Resend rejected the application email", sent.status, await sent.text().catch(() => ""));
+  }
+
+  // nothing kept it: tell the candidate instead of pretending it went through
+  if (!saved && !emailed) {
+    return NextResponse.json(
+      { error: `Sorry, we couldn't receive your application right now. Please email your CV to ${process.env.CAREERS_TO || "contact@pandjtechnologies.com"}.` },
+      { status: 503 },
+    );
   }
 
   return NextResponse.json({ ok: true });
