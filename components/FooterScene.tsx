@@ -71,7 +71,7 @@ export function FooterScene() {
       <div className="absolute left-1/2 top-1/2 grid h-[26%] w-[29%] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-sky/40 bg-[#0a1226] shadow-[0_0_50px_-6px_rgba(30,192,242,0.8)]">
         {!reduce && <span aria-hidden className="absolute inset-0 animate-ping rounded-full border border-sky/30 [animation-duration:3s]" />}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo-mark.png" alt="P & J Technologies" className="h-[58%] w-[58%] object-contain" />
+        <img src="/logo-mark.webp" alt="P & J Technologies" className="h-[58%] w-[58%] object-contain" />
       </div>
 
       {/* services */}

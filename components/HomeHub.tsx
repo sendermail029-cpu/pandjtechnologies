@@ -90,7 +90,7 @@ export function HomeHub() {
             </>
           )}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-mark.png" alt="P & J Technologies" className="relative h-[52%] w-[52%] object-contain" />
+          <img src="/logo-mark.webp" alt="P & J Technologies" className="relative h-[52%] w-[52%] object-contain" />
         </div>
 
         {/* services */}

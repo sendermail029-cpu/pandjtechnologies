@@ -108,7 +108,7 @@ export function JobAlerts({ latestRole }: { latestRole?: string }) {
                   <span className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-[#14b8c4] to-saffron" />
                   <p className="flex items-center gap-2 text-[11px] font-semibold text-slate">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/logo-mark.png" alt="" className="h-5 w-5 rounded-md bg-white object-contain p-0.5" />
+                    <img src="/logo-mark.webp" alt="" className="h-5 w-5 rounded-md bg-white object-contain p-0.5" />
                     P &amp; J Careers · now
                   </p>
                   <p className="mt-1.5 text-[13px] font-semibold text-ink">New role posted</p>

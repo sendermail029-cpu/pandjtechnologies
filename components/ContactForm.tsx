@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { company, services } from "@/lib/site";
 import { EnquirySent } from "./EnquirySent";
 
@@ -11,7 +11,13 @@ const label = "text-[14px] font-semibold text-ink";
 const line =
   "mt-2 w-full border-0 border-b border-line bg-transparent px-0 pb-3 pt-1 text-[16px] text-ink transition placeholder:text-slate/55 focus:border-cobalt focus:shadow-[0_1px_0_0_var(--color-cobalt)] focus:outline-none focus:ring-0";
 
-export function ContactForm({ defaultService = "" }: { defaultService?: string }) {
+export function ContactForm() {
+  // the service picked on a service page arrives as ?service=… (read here, so the page itself can be pre-built)
+  const [defaultService, setDefaultService] = useState("");
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("service") ?? "";
+    if (services.some((x) => x.slug === q)) setDefaultService(q);
+  }, []);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
   const [draft, setDraft] = useState("");

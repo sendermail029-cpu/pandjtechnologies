@@ -99,7 +99,7 @@ export function PageTransition() {
               <div className="absolute inset-[23%] rounded-full bg-[#060d18]" />
               <div className="absolute inset-[27%] grid place-items-center rounded-full bg-white shadow-[0_0_50px_-4px_rgba(56,189,248,0.8)]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logo-mark.png" alt="" className="h-[60%] w-[60%] object-contain" />
+                <img src="/logo-mark.webp" alt="" className="h-[60%] w-[60%] object-contain" />
               </div>
             </div>
             <p className="mt-6 text-[13px] font-semibold uppercase tracking-[0.32em] text-white/80">

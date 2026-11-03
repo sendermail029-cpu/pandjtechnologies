@@ -70,8 +70,12 @@ const orgJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN">
+    // suppressHydrationWarning: the inline script below adds a class to <html> before React starts
+    <html lang="en-IN" suppressHydrationWarning>
       <head>
+        {/* the first screen shows straight away with a CSS fade (no waiting for JavaScript); MotionReveal takes over
+            once the page is interactive and keeps the scroll-in effect for everything further down */}
+        <script dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add("aos-intro")` }} />
         {/* scroll-reveal elements start hidden (globals.css); without JS, show everything */}
         <noscript>
           <style>{"[data-aos]{opacity:1!important}"}</style>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { connection } from "next/server";
 import { getOpenJobs, getUpcomingWalkIns } from "@/lib/jobs";
 import { WalkInBanner } from "@/components/WalkInBanner";
 import { JobAlerts } from "@/components/JobAlerts";
@@ -23,8 +22,10 @@ function postedAgo(iso: string) {
   return `${Math.floor(days / 30)} months ago`;
 }
 
+// pre-built, refreshed every 5 minutes (so closing dates take effect) and right after an admin change
+export const revalidate = 300;
+
 export default async function CareersPage() {
-  await connection(); // job posts change from the admin panel, so read them on every request
   const [jobs, walkIns] = await Promise.all([getOpenJobs(), getUpcomingWalkIns()]);
   // mass hiring drives, announced above the job list
   const mass = jobs.filter((j) => j.massHiring);

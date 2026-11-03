@@ -30,11 +30,39 @@ html {
   scroll-behavior: smooth;
 }
 
-/* scroll reveals (components/MotionReveal.tsx): hidden until Framer Motion brings them in
-   (a <noscript> rule in app/layout.tsx shows them when JavaScript is off) */
+/* scroll reveals (components/MotionReveal.tsx).
+   1. Page load: an inline script adds .aos-intro to <html>, so everything is visible at once and fades in with CSS,
+      without waiting for the JavaScript.
+   2. Once interactive, MotionReveal swaps .aos-intro for .aos-armed: sections below the screen are then hidden
+      until they scroll into view (a <noscript> rule in app/layout.tsx shows everything when JavaScript is off). */
 @media (prefers-reduced-motion: no-preference) {
-  [data-aos]:not([data-revealed]) {
+  .aos-intro [data-aos] {
+    animation: aos-intro 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .aos-intro [data-aos="fade-left"] { --aos-x: 40px; --aos-y: 0; }
+  .aos-intro [data-aos="fade-right"] { --aos-x: -40px; --aos-y: 0; }
+  .aos-intro [data-aos="fade-down"] { --aos-y: -24px; }
+  .aos-intro [data-aos="zoom-in"] { --aos-y: 0; --aos-s: 0.94; }
+  .aos-intro [data-aos-delay="50"] { animation-delay: 50ms; }
+  .aos-intro [data-aos-delay="60"] { animation-delay: 60ms; }
+  .aos-intro [data-aos-delay="80"] { animation-delay: 80ms; }
+  .aos-intro [data-aos-delay="100"] { animation-delay: 100ms; }
+  .aos-intro [data-aos-delay="120"] { animation-delay: 120ms; }
+  .aos-intro [data-aos-delay="150"] { animation-delay: 150ms; }
+  .aos-intro [data-aos-delay="160"] { animation-delay: 160ms; }
+  .aos-intro [data-aos-delay="200"] { animation-delay: 200ms; }
+  .aos-intro [data-aos-delay="240"] { animation-delay: 240ms; }
+  .aos-intro [data-aos-delay="250"] { animation-delay: 250ms; }
+  .aos-intro [data-aos-delay="300"] { animation-delay: 300ms; }
+  .aos-intro [data-aos-delay="400"] { animation-delay: 400ms; }
+  .aos-armed [data-aos]:not([data-revealed]) {
     opacity: 0;
+  }
+}
+@keyframes aos-intro {
+  from {
+    opacity: 0;
+    transform: translate(var(--aos-x, 0), var(--aos-y, 24px)) scale(var(--aos-s, 1));
   }
 }
 

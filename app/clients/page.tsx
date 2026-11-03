@@ -6,7 +6,6 @@ import { CountriesGlobe } from "@/components/CountriesGlobe";
 import { ReviewsCarousel } from "@/components/ReviewsCarousel";
 import { clientCountries } from "@/lib/client-countries";
 import { pearsonPath } from "@/lib/brand-icons";
-import { connection } from "next/server";
 import { company, partnersText } from "@/lib/site";
 import { getPublishedReviews } from "@/lib/reviews";
 import { getClients } from "@/lib/clients";
@@ -58,9 +57,11 @@ const Stars = ({ n }: { n: number }) => (
   </span>
 );
 
+// pre-built, refreshed every 10 minutes and right after an admin change
+export const revalidate = 600;
+
 export default async function ClientsPage() {
   // the client list is managed from the admin panel, so read it on every visit
-  await connection();
   const [clients, reviews] = await Promise.all([getClients(), getPublishedReviews()]);
   // split into two rows that scroll in opposite directions
   const rows = [clients.filter((_, i) => i % 2 === 0), clients.filter((_, i) => i % 2 === 1)].filter((r) => r.length);

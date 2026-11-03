@@ -41,7 +41,7 @@ export function WorldwideBanner() {
             {...(reduce ? {} : { animate: { scale: [1, 1.05, 1] }, transition: { duration: 4, repeat: Infinity, ease: "easeInOut" as const } })}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-mark.png" alt="" className="h-[68%] w-[68%] object-contain" />
+            <img src="/logo-mark.webp" alt="" className="h-[68%] w-[68%] object-contain" />
           </motion.div>
         </div>
 

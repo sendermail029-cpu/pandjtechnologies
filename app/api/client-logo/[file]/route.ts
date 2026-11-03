@@ -17,7 +17,8 @@ export async function GET(_req: Request, { params }: { params: Promise<{ file: s
         "X-Content-Type-Options": "nosniff",
         // SVGs can't run scripts when served with this policy
         "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'",
-        "Cache-Control": "public, max-age=86400",
+        // browsers keep logos for a week and Vercel's network serves them without re-running this route
+        "Cache-Control": "public, max-age=604800, s-maxage=31536000, stale-while-revalidate=86400",
       },
     });
   } catch {

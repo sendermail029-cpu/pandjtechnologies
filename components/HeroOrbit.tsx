@@ -168,7 +168,7 @@ export function HeroOrbit({ nodes, active }: { nodes: Node[]; active: number }) 
           </>
         )}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo-mark.png" alt="" className="relative h-[56%] w-[56%] object-contain" />
+        <img src="/logo-mark.webp" alt="" className="relative h-[56%] w-[56%] object-contain" />
       </div>
     </div>
   );

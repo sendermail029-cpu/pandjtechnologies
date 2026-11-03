@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { randomBytes } from "crypto";
+import sharp from "sharp";
 import { clients as seed } from "@/lib/site";
 
 /**
@@ -48,14 +49,14 @@ export async function getClients(): Promise<Client[]> {
     // first run: start from the list in lib/site.ts (Airpay with its logo, if the file is there)
     const now = new Date().toISOString();
     const hasAirpay = await fs
-      .access(path.join(LOGOS, "airpay.png"))
+      .access(path.join(LOGOS, "airpay.webp"))
       .then(() => true)
       .catch(() => false);
     const list = seed.map((c) => ({
       id: slug(c.name),
       name: c.name,
       sector: c.sector,
-      ...(c.name === "Airpay" && hasAirpay ? { logo: "airpay.png" } : {}),
+      ...(c.name === "Airpay" && hasAirpay ? { logo: "airpay.webp" } : {}),
       addedAt: now,
     }));
     // hosts with a read-only disk (e.g. Vercel) can't save it: still show the list
@@ -81,9 +82,16 @@ export async function saveLogo(file: File | null): Promise<{ name?: string; erro
   const buf = Buffer.from(await file.arrayBuffer());
   const ext = logoType(buf);
   if (!ext) return { error: "Upload the logo as a PNG, JPG, WebP or SVG file." };
-  const name = `${randomBytes(8).toString("hex")}.${ext}`;
+  // pictures are stored as small WebP files (at most 400×200, transparency kept) so pages load fast; SVGs are already tiny
+  let out = buf;
+  let saveAs = ext;
+  if (ext !== "svg") {
+    out = await sharp(buf).resize(400, 200, { fit: "inside", withoutEnlargement: true }).webp({ quality: 86, alphaQuality: 90 }).toBuffer();
+    saveAs = "webp";
+  }
+  const name = `${randomBytes(8).toString("hex")}.${saveAs}`;
   await fs.mkdir(LOGOS, { recursive: true });
-  await fs.writeFile(path.join(LOGOS, name), buf);
+  await fs.writeFile(path.join(LOGOS, name), out);
   return { name };
 }
 

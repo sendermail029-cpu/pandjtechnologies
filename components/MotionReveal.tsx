@@ -25,12 +25,27 @@ export function MotionReveal() {
 
   useEffect(() => {
     const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const els = Array.from(document.querySelectorAll<HTMLElement>("[data-aos]:not([data-revealed])"));
+    const root = document.documentElement;
+    let els = Array.from(document.querySelectorAll<HTMLElement>("[data-aos]:not([data-revealed])"));
 
     if (still) {
       els.forEach((el) => (el.dataset.revealed = ""));
+      root.classList.remove("aos-intro");
       return;
     }
+
+    // first load: the CSS intro already showed what's on screen, so keep that as it is
+    // and only hide what's further down, to reveal it on scroll
+    if (root.classList.contains("aos-intro")) {
+      const h = window.innerHeight;
+      els.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < h && r.bottom > 0) el.dataset.revealed = "";
+      });
+      els = els.filter((el) => el.dataset.revealed === undefined);
+      root.classList.remove("aos-intro");
+    }
+    root.classList.add("aos-armed");
 
     const stops = els.map((el) =>
       inView(

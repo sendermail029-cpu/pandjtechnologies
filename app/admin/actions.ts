@@ -126,6 +126,7 @@ export async function removeAlert(form: FormData) {
 function refreshClients() {
   revalidatePath("/admin");
   revalidatePath("/clients");
+  revalidatePath("/");
 }
 
 export async function createClient(_: FormState, form: FormData): Promise<FormState> {

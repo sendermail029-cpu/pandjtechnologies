@@ -35,7 +35,7 @@ export function CommitmentsContract({ items }: { items: Commitment[] }) {
             <p className="mt-1.5 text-[19px] font-semibold tracking-tight">Our commitments to you</p>
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-mark.png" alt="" className="h-10 w-10 shrink-0 object-contain" />
+          <img src="/logo-mark.webp" alt="" className="h-10 w-10 shrink-0 object-contain" />
         </div>
 
         <ol className="relative mt-6 space-y-6">

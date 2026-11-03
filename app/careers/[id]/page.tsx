@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { connection } from "next/server";
 import { ApplyDialog } from "@/components/ApplyDialog";
 import { getJob } from "@/lib/jobs";
 import { RibbonBackdrop } from "@/components/HeroKit";
@@ -14,8 +13,10 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   return { title: `${job.title} — Careers`, description: job.summary };
 }
 
+// pre-built, refreshed every 5 minutes (so closing dates take effect) and right after an admin change
+export const revalidate = 300;
+
 export default async function JobPage({ params }: { params: Promise<{ id: string }> }) {
-  await connection(); // read the job fresh on every request
   const { id } = await params;
   const job = await getJob(id);
   if (!job) notFound();

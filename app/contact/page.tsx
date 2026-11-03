@@ -5,7 +5,7 @@ import { LookingEyes } from "@/components/LookingEyes";
 import { ConnectRow } from "@/components/ConnectRow";
 import { ConnectMap } from "@/components/ConnectMap";
 import { FadeIn, MaskLine, MotionProvider } from "@/components/Motion";
-import { company, services } from "@/lib/site";
+import { company } from "@/lib/site";
 
 const serif = Playfair_Display({ subsets: ["latin"], weight: "500", style: "italic" });
 
@@ -14,9 +14,7 @@ export const metadata: Metadata = {
   description: "Talk to P & J Technologies about your website, app, CRM, ERP, custom software or digital marketing project.",
 };
 
-export default async function ContactPage({ searchParams }: { searchParams: Promise<{ service?: string }> }) {
-  const { service } = await searchParams;
-  const defaultService = services.some((s) => s.slug === service) ? service : "";
+export default function ContactPage() {
 
   return (
     <MotionProvider>
@@ -171,7 +169,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
 
             <FadeIn inView x={40} y={0} delay={0.1} className="order-1 min-w-0 lg:order-2">
               <div id="enquiry-form" className="scroll-mt-6">
-                <ContactForm defaultService={defaultService} />
+                <ContactForm />
               </div>
             </FadeIn>
           </div>

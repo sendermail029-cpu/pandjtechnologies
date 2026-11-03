@@ -30,7 +30,7 @@ export function CtaBand({
         />
         <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-sky/25 blur-3xl" />
         <Image
-          src="/logo-mark.png"
+          src="/logo-mark.webp"
           alt=""
           width={512}
           height={512}

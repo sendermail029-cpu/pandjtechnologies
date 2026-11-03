@@ -68,7 +68,7 @@ export function HelpBanner() {
             <div className="overflow-hidden rounded-[28px] bg-white text-ink shadow-[0_40px_80px_-20px_rgb(0_0_0/0.6)] [transform:rotateY(-12deg)_rotateX(6deg)]">
               <div className="flex items-center gap-3 bg-gradient-to-r from-[#0e9aa6] via-cobalt to-[#1c36ab] px-5 py-4 text-white">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logo-mark.png" alt="" className="h-9 w-9 rounded-xl bg-white object-contain p-1" />
+                <img src="/logo-mark.webp" alt="" className="h-9 w-9 rounded-xl bg-white object-contain p-1" />
                 <div>
                   <p className="text-[14px] font-semibold">P &amp; J Support</p>
                   <p className="flex items-center gap-1.5 text-[11.5px] text-white/80">

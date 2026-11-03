@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Playfair_Display } from "next/font/google";
-import { connection } from "next/server";
 import { ContactPaths } from "@/components/ContactPaths";
 import { HeroFlow } from "@/components/HeroFlow";
 import { HomeHero } from "@/components/HomeHero";
@@ -42,9 +41,10 @@ const Arrow = () => (
   </svg>
 );
 
+export const revalidate = 600;
+
 export default async function Home() {
-  // clients and reviews are managed from the admin panel
-  await connection();
+  // clients and reviews are managed from the admin panel (the page refreshes every 10 minutes, and right after an admin change)
   const [clients, reviews] = await Promise.all([getClients(), getPublishedReviews()]);
   const logos = clients.filter((c) => c.logo);
 
