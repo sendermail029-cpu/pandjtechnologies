@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { serviceIcons, testCenterIcon } from "@/lib/service-icons";
 
@@ -9,6 +10,15 @@ type Node = { slug: string; label: string; color: string };
 // The service named in the headline (active) lights up and a pulse runs out to it.
 export function HeroOrbit({ nodes, active }: { nodes: Node[]; active: number }) {
   const reduce = useReducedMotion();
+  // phones: skip the dots travelling between services (dozens of animations every frame); the lit service and its pulse stay
+  const [lite, setLite] = useState(true);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setLite(!mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
   const all = [...nodes, { slug: "test-center", label: "Test center", color: "#ffa830" }];
   const spots = all.map((_, k) => {
     const a = (k / all.length) * Math.PI * 2 - Math.PI / 2;
@@ -75,7 +85,7 @@ export function HeroOrbit({ nodes, active }: { nodes: Node[]; active: number }) 
             );
           })}
           {/* data packets running along the links */}
-          {!reduce &&
+          {!reduce && !lite &&
             links.map(([a, b], k) => (
               <motion.circle
                 key={`p${k}`}
@@ -87,7 +97,7 @@ export function HeroOrbit({ nodes, active }: { nodes: Node[]; active: number }) 
               />
             ))}
           {/* packets from the core to every service */}
-          {!reduce &&
+          {!reduce && !lite &&
             spots.map((p, k) => (
               <motion.circle
                 key={`c${k}`}

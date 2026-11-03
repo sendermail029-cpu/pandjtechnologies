@@ -121,6 +121,27 @@ select:focus-visible {
 .footer-glow {
   animation: drift 18s ease-in-out infinite;
 }
+@media (min-width: 768px) {
+  /* move the blurred glows on the graphics chip instead of redrawing them every frame */
+  .footer-glow {
+    will-change: translate, scale;
+  }
+}
+
+/* Speed on phones: the glows stay but hold still, and dashed lines stop flowing.
+   Both redraw every frame and cost a phone far more than they add on a small screen. */
+@media (max-width: 767px) {
+  .footer-glow,
+  .map-flow {
+    animation: none;
+  }
+}
+
+/* sections out of view aren't laid out or painted until they come near the screen */
+#main > * > section:not(:first-child) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
 
 /* World map backdrop: a few dots twinkle, the office pins pulse */
 @keyframes map-twinkle {
