@@ -75,7 +75,7 @@ export default async function Home() {
                     <li key={c.id} className="flex h-12 items-center">
                       {c.logo ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={`/api/client-logo/${c.logo}`} alt={half ? "" : c.name} className="max-h-12 max-w-[140px] object-contain transition duration-300 hover:scale-105" />
+                        <img src={`/api/client-logo/${c.logo}`} alt={half ? "" : c.name} loading="lazy" decoding="async" className="max-h-12 max-w-[140px] object-contain transition duration-300 hover:scale-105" />
                       ) : (
                         <span className="whitespace-nowrap text-[16px] font-semibold tracking-tight text-ink-2">{c.name}</span>
                       )}

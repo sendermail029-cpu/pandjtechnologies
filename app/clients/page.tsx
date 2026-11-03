@@ -145,7 +145,7 @@ export default async function ClientsPage() {
                       >
                         {c.logo ? (
                           // eslint-disable-next-line @next/next/no-img-element
-                          <img src={`/api/client-logo/${c.logo}`} alt={copy ? "" : `${c.name} logo`} className="max-h-20 max-w-full object-contain transition duration-300 group-hover:scale-105 sm:max-h-24" />
+                          <img src={`/api/client-logo/${c.logo}`} alt={copy ? "" : `${c.name} logo`} loading="lazy" decoding="async" className="max-h-20 max-w-full object-contain transition duration-300 group-hover:scale-105 sm:max-h-24" />
                         ) : (
                           <span className="flex flex-col items-center gap-2 text-center">
                             <span className={`grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br text-[16px] font-bold text-white ${tones[i % tones.length]}`}>{initials(c.name)}</span>

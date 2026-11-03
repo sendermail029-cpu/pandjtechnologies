@@ -518,6 +518,7 @@ export default function VenomButton(props: Props) {
             if (ptr.inside) { touched = true; ptr.last = performance.now() }
         }
         const onMove = (e: PointerEvent) => {
+            wake()
             if (e.pointerType === "touch") {
                 if (!ptr.down || !e.isPrimary) return
                 ptr.touch = true
@@ -525,6 +526,7 @@ export default function VenomButton(props: Props) {
             place(e)
         }
         const onDown = (e: PointerEvent) => {
+            wake()
             if (e.target === btn && !reduced) pressed = true
             if (e.pointerType !== "touch" || !e.isPrimary) return
             ptr.touch = true
@@ -541,7 +543,7 @@ export default function VenomButton(props: Props) {
         }
 
         const onLeave = () => { if (!ptr.touch) ptr.inside = false }
-        const onKeyDown = (e: KeyboardEvent) => { if ((e.key === " " || e.key === "Enter") && !reduced) pressed = true }
+        const onKeyDown = (e: KeyboardEvent) => { wake(); if ((e.key === " " || e.key === "Enter") && !reduced) pressed = true }
         const onKeyUp = () => { pressed = false }
         stage.addEventListener("pointermove", onMove, { passive: true })
         stage.addEventListener("pointerdown", onDown, { passive: true })
@@ -668,6 +670,18 @@ export default function VenomButton(props: Props) {
 
         let raf = 0
         let prev = -1
+        // P & J: keep animating only while there's activity (pointer near, key press, resize), then sleep,
+        // so the button costs nothing while the visitor is reading the page
+        let awakeUntil = 0
+        let running = false
+        const wake = (ms = 3000) => {
+            awakeUntil = Math.max(awakeUntil, performance.now() + ms)
+            if (!running) {
+                running = true
+                prev = -1
+                raf = requestAnimationFrame(frame)
+            }
+        }
         let t0 = -1
         const draw = (now: number) => {
             const dt = prev < 0 ? 0 : Math.min(0.033, (now - prev) / 1000)
@@ -1051,15 +1065,17 @@ export default function VenomButton(props: Props) {
             }
         }
 
-        const frame = (now: number) => {
-            raf = requestAnimationFrame(frame)
+        function frame(now: number) {
             draw(now)
+            if (ptr.inside || pressed || ptr.down) awakeUntil = Math.max(awakeUntil, now + 3000)
+            if (now < awakeUntil) raf = requestAnimationFrame(frame)
+            else running = false
         }
-        const ro = new ResizeObserver(fit)
+        const ro = new ResizeObserver(() => { fit(); wake(600) })
         ro.observe(stage)
         ro.observe(btn)
         fit()
-        raf = requestAnimationFrame(frame)
+        wake(1500)
         return () => {
             cancelAnimationFrame(raf)
             ro.disconnect()

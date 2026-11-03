@@ -306,6 +306,15 @@ export function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  // the liquid button is hidden on phones, so only load and run it on wider screens
+  const [wide, setWide] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 640px)");
+    const update = () => setWide(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
@@ -420,6 +429,7 @@ export function Header() {
           <div className="flex items-center gap-3">
             {/* liquid "Venom" button: strands of navy goo reach toward the pointer */}
             <div className="relative hidden h-[72px] w-[250px] sm:block">
+              {wide && (
               <VenomButton
                 label="Let's collaborate"
                 background="transparent"
@@ -434,6 +444,7 @@ export function Header() {
                 onClick={() => router.push("/contact")}
                 style={{ minWidth: 0, minHeight: 0 }}
               />
+              )}
             </div>
             <button
               className="grid h-11 w-11 place-items-center rounded-full bg-ink/[0.05] text-ink ring-1 ring-ink/10 transition hover:bg-ink hover:text-white group-data-[dark=true]/header:bg-white/10 group-data-[dark=true]/header:text-white group-data-[dark=true]/header:ring-white/15 lg:hidden"
