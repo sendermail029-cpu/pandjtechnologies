@@ -1,0 +1,8 @@
+node_modules
+.next
+*.tsbuildinfo
+.env*.local
+
+# job posts, applications and uploaded resumes
+/data
+.originkit/

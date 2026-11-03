@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700&display=swap");
+
+.features-06 {
+  background: #faf9f6;
+  color: #0e0f12;
+  font-family: "Rethink Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  isolation: isolate;
+}
+.features-06,
+.features-06 * {
+  box-sizing: border-box;
+}
+.features-06 .int {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 24px;
+}
+.features-06 .head {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 36px;
+}
+.features-06 h2 {
+  margin: 0 0 14px;
+  font-size: clamp(34px, 4.4vw, 52px);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.features-06 .head p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.55;
+  color: #5d6170;
+}
+
+.features-06 .filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+.features-06 .filters button {
+  height: 38px;
+  padding: 0 16px;
+  border: 1px solid #e2e1db;
+  border-radius: 999px;
+  background: #fff;
+  color: #0e0f12;
+  font:
+    500 14px "Rethink Sans",
+    sans-serif;
+  cursor: pointer;
+}
+.features-06 .filters button:hover {
+  border-color: #b9b8b0;
+}
+.features-06 .filters button[aria-pressed="true"] {
+  background: #1f3bff;
+  border-color: #1f3bff;
+  color: #fff;
+}
+
+.features-06 .wall {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+.features-06 .tool {
+  display: grid;
+  align-content: space-between;
+  gap: 22px;
+  padding: 16px;
+  min-height: 128px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #ecebe5;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    opacity 0.25s,
+    transform 0.2s,
+    border-color 0.2s;
+}
+.features-06 .tool:hover {
+  border-color: #c9c8c0;
+  transform: translateY(-2px);
+}
+.features-06 .tool .logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+}
+.features-06 .tool .logo i {
+  width: 20px;
+  height: 20px;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+.features-06 .tool b {
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
+}
+.features-06 .tool span {
+  font-size: 12.5px;
+  color: #8a8d99;
+}
+.features-06 .tool.dim {
+  opacity: 0.22;
+}
+.features-06 .core {
+  grid-column: 3 / span 2;
+  grid-row: 1 / span 2;
+  position: relative;
+  border-radius: 16px;
+  background: #0e0f12;
+  color: #fff;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.features-06 #globe {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.features-06 .core .count {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+}
+.features-06 .core .count b {
+  color: #fff;
+  font-weight: 600;
+}
+
+.features-06 .foot {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 32px;
+  font-size: 15px;
+  flex-wrap: wrap;
+}
+.features-06 .foot a {
+  color: #1f3bff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.features-06 .foot a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.features-06 .foot span {
+  color: #5d6170;
+}
+
+@media (max-width: 960px) {
+  .features-06 .wall {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .features-06 .core {
+    grid-column: 2 / span 2;
+  }
+}
+@media (max-width: 560px) {
+  .features-06 .int {
+    padding: 80px 16px;
+  }
+  .features-06 .wall {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .features-06 .core {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    aspect-ratio: 1;
+  }
+  .features-06 .tool {
+    min-height: 112px;
+  }
+}

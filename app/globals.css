@@ -1,0 +1,227 @@
+@import "tailwindcss";
+@import "@fontsource-variable/schibsted-grotesk";
+
+@theme {
+  --font-sans: "Schibsted Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0f1d33;
+  --color-ink-2: #1c2c47;
+  --color-paper: #f6f7f9;
+  --color-mist: #e9edf3;
+  --color-line: #d8dee8;
+  --color-slate: #586479;
+  --color-cobalt: #2747d6;
+  --color-cobalt-dark: #1c36ab;
+  --color-saffron: #f0a23b;
+  --color-brand-navy: #0b2a66;
+  --color-footer-from: #000a2e;
+  --color-footer-to: #00306e;
+  --color-sky: #1ec0f2;
+
+  --text-display: clamp(2.6rem, 5.4vw, 4.6rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.035em;
+  --text-h2: clamp(1.9rem, 3.2vw, 2.85rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.025em;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* scroll reveals (components/MotionReveal.tsx): hidden until Framer Motion brings them in
+   (a <noscript> rule in app/layout.tsx shows them when JavaScript is off) */
+@media (prefers-reduced-motion: no-preference) {
+  [data-aos]:not([data-revealed]) {
+    opacity: 0;
+  }
+}
+
+body {
+  /* scroll-in animations start off to the side; never let them add a horizontal scrollbar */
+  overflow-x: clip;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-saffron);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+/* form fields show focus with their own cobalt underline instead of the box */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+}
+
+::selection {
+  background: var(--color-saffron);
+  color: var(--color-ink);
+}
+
+/* Hero flow: the one orchestrated motion on the page */
+@keyframes node-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.flow-node {
+  opacity: 0;
+  animation: node-in .6s ease-out forwards;
+}
+
+/* Contact hero: service icons bob gently */
+@keyframes float-y {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+.float-icon {
+  animation: float-y 4s ease-in-out infinite;
+}
+
+/* Footer: slowly drifting background glows */
+@keyframes drift {
+  0%, 100% { translate: 0 0; scale: 1; }
+  33% { translate: 60px -40px; scale: 1.1; }
+  66% { translate: -40px 30px; scale: 0.95; }
+}
+.footer-glow {
+  animation: drift 18s ease-in-out infinite;
+}
+
+/* World map backdrop: a few dots twinkle, the office pins pulse */
+@keyframes map-twinkle {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.85; }
+}
+.map-twinkle {
+  opacity: 0;
+  animation: map-twinkle 6s ease-in-out infinite;
+}
+@keyframes map-pulse {
+  0% { r: 0.6; opacity: 0.9; }
+  100% { r: 4; opacity: 0; }
+}
+.map-pulse {
+  animation: map-pulse 3s ease-out infinite;
+}
+
+/* Contact map: dashes flow along the arcs */
+@keyframes map-flow {
+  to { stroke-dashoffset: -12; }
+}
+.map-flow {
+  stroke-dasharray: 2 4;
+  animation: map-flow 2.4s linear infinite;
+}
+
+/* Small globe icon: its meridian turns */
+@keyframes globe-turn {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.15); }
+}
+.globe-turn {
+  transform-origin: 12px 12px;
+  animation: globe-turn 4s ease-in-out infinite;
+}
+
+/* Clients globe: logos ride a slow orbit and stay upright */
+@keyframes orbit-spin {
+  to { rotate: 360deg; }
+}
+.orbit-spin {
+  animation: orbit-spin 60s linear infinite;
+}
+.orbit-counter {
+  animation: orbit-spin 60s linear infinite reverse;
+}
+
+/* Hero titles: accent gradient that flows slowly */
+@keyframes title-flow {
+  to { background-position: 200% 0; }
+}
+.title-flow {
+  background-image: linear-gradient(90deg, #5eead4, #1ec0f2, #f0a23b, #1ec0f2, #5eead4);
+  background-size: 200% 100%;
+  animation: title-flow 8s linear infinite;
+}
+
+/* Footer: rotating headline word */
+@keyframes word-in {
+  from { opacity: 0; transform: translateY(70%); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+.word-in {
+  animation: word-in .6s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+/* Footer: services ticker */
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 50s linear infinite;
+}
+.marquee-reverse {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Careers hero: hands slide in from either side, then keep reaching gently toward the globe */
+@keyframes hand-left-in {
+  from { opacity: 0; translate: -18% -6%; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes hand-right-in {
+  from { opacity: 0; translate: 18% 6%; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes reach-left {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(14px, 6px); }
+}
+@keyframes reach-right {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-14px, -6px); }
+}
+.hand-in-left {
+  animation: hand-left-in 1.4s cubic-bezier(.2, .8, .2, 1) .2s both, reach-left 7s ease-in-out 1.6s infinite;
+}
+.hand-in-right {
+  animation: hand-right-in 1.4s cubic-bezier(.2, .8, .2, 1) .4s both, reach-right 7s ease-in-out 1.8s infinite;
+}
+
+/* Footer: a beam of light runs along the top edge */
+@keyframes beam-run {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(340%); }
+}
+.beam-run {
+  animation: beam-run 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beam-run { animation: none; opacity: 0; }
+  .hand-in-left, .hand-in-right { animation: none; }
+  html { scroll-behavior: auto; }
+  .float-icon { animation: none; }
+  .footer-glow, .marquee-track, .word-in, .map-pulse, .title-flow, .map-flow, .globe-turn, .orbit-spin, .orbit-counter { animation: none; }
+  .map-comet { display: none; }
+  .map-twinkle { animation: none; opacity: 0.5; }
+  .flow-lead-wrap { display: none; }
+  .flow-node { animation: none; opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .flow-sub { display: none; }
+}
+@media (max-width: 480px) {
+  .flow-label { font-size: 17px; transform: translateY(8px); }
+}
