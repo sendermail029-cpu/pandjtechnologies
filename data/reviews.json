@@ -1,0 +1,86 @@
+[
+  {
+    "id": "59f846290edb",
+    "name": "Jaya Kumar",
+    "role": "",
+    "company": "Sowers Ministry",
+    "service": "Mobile app",
+    "quote": "From the first discussion to launch on both the Play Store and App Store, the process was structured and transparent. P & J Technologies turned our idea into a stable, well-designed app, and their support after launch has been just as dependable.",
+    "rating": 5,
+    "country": "India",
+    "status": "published",
+    "addedAt": "2026-11-02T18:14:19.845Z"
+  },
+  {
+    "id": "8a558f5353ef",
+    "name": "Mathews",
+    "role": "",
+    "company": "FGBMFI",
+    "service": "Website",
+    "quote": "P & J Technologies brought real care to our project. They understood our mission and built a website that represents it with dignity and clarity. Our team can now update events and galleries in minutes, and people connect with our work online.",
+    "rating": 5,
+    "country": "Singapore",
+    "status": "published",
+    "addedAt": "2026-11-02T18:14:19.845Z"
+  },
+  {
+    "id": "9460cf1f7f7e",
+    "name": "Rashi",
+    "role": "",
+    "company": "GEM Group Projects",
+    "service": "CRM",
+    "quote": "Before working with P & J Technologies, our leads were spread across spreadsheets and WhatsApp. They built a CRM around how our team actually sells, and now every enquiry, follow-up and deal is tracked in one place.",
+    "rating": 5,
+    "country": "India",
+    "status": "published",
+    "addedAt": "2026-11-02T18:14:19.845Z"
+  },
+  {
+    "id": "bdee6ea44cad",
+    "name": "Living Hope team",
+    "role": "",
+    "company": "Living Hope",
+    "service": "Website",
+    "rating": 5,
+    "country": "India",
+    "status": "published",
+    "addedAt": "2026-11-02T18:21:04.587Z",
+    "quote": "P & J Technologies understood our vision from the very first conversation and built a website that shares our message with warmth and clarity. Updating it is simple for our team, and their support has been prompt and reliable throughout."
+  },
+  {
+    "id": "43272de92374",
+    "name": "PSP Channel team",
+    "role": "",
+    "company": "PSP Channel",
+    "service": "Digital marketing",
+    "quote": "Their Meta and Google Ads campaigns are focused on what matters: real reach and real engagement, not vanity metrics. Every month we get a clear report, honest advice and steady improvements.",
+    "rating": 5,
+    "country": "India",
+    "status": "published",
+    "addedAt": "2026-11-02T18:14:19.845Z"
+  },
+  {
+    "id": "23727eb9b137",
+    "name": "Firdaus",
+    "role": "",
+    "company": "Prepp365",
+    "service": "Website",
+    "quote": "P & J Technologies built a platform that matches the way we teach. Students can find courses and sign up easily, the site looks professional on every device, and the team was responsive and clear at every stage of the project.",
+    "rating": 5,
+    "country": "India",
+    "status": "published",
+    "addedAt": "2026-11-02T18:24:40.316Z"
+  },
+  {
+    "id": "0dd570ab36cb",
+    "name": "Bharat",
+    "role": "",
+    "company": "SV Wellness",
+    "service": "Digital marketing",
+    "quote": "Their digital marketing helped more people discover SV Wellness. The campaigns are well targeted, the creatives reflect our brand, and every month we get a clear report with honest advice on what to improve next.",
+    "rating": 5,
+    "country": "India",
+    "status": "published",
+    "addedAt": "2026-11-02T18:24:40.316Z"
+  }
+]

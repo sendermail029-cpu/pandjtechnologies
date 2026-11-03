@@ -3,6 +3,11 @@ node_modules
 *.tsbuildinfo
 .env*.local
 
-# job posts, applications and uploaded resumes
-/data
+# admin data: the public parts (clients, logos, reviews, jobs, walk-ins) are deployed with the site;
+# anything personal that visitors send in stays off GitHub
+/data/applications.json
+/data/resumes/
+/data/job-alerts.json
+/data/newsletter.json
+/data/*.tmp
 .originkit/

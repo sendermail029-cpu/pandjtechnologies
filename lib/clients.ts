@@ -58,7 +58,8 @@ export async function getClients(): Promise<Client[]> {
       ...(c.name === "Airpay" && hasAirpay ? { logo: "airpay.png" } : {}),
       addedAt: now,
     }));
-    await write(list);
+    // hosts with a read-only disk (e.g. Vercel) can't save it: still show the list
+    await write(list).catch(() => {});
     return list;
   }
 }

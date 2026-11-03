@@ -1,0 +1,155 @@
+[
+  {
+    "id": "video-editor-freshers-ccba",
+    "title": "Video Editor (Freshers)",
+    "location": "Vijayawada (on-site)",
+    "type": "Full-time",
+    "experience": "Freshers welcome",
+    "qualification": "Any graduate",
+    "openings": 1,
+    "summary": "Edit short-form and long-form videos for our clients' social media, ads and websites, working closely with our content and marketing team.",
+    "responsibilities": [
+      "Edit reels, shorts and promotional videos for Instagram, YouTube and Facebook",
+      "Add captions, music, transitions, motion text and basic colour correction",
+      "Turn raw footage and briefs into clear, engaging stories",
+      "Prepare videos in the right sizes and formats for each platform",
+      "Keep project files and assets organised for the team"
+    ],
+    "requirements": [
+      "Basic working knowledge of a video editing tool",
+      "A sample reel or a few edited videos (college or personal projects count)",
+      "Good sense of timing, music and visual storytelling",
+      "Willing to learn and take feedback"
+    ],
+    "skills": [
+      "Adobe Premiere Pro",
+      "CapCut",
+      "Video editing",
+      "Captions & subtitles",
+      "Social media formats"
+    ],
+    "niceToHave": [
+      "After Effects",
+      "DaVinci Resolve",
+      "Canva",
+      "Basic motion graphics"
+    ],
+    "open": true,
+    "postedAt": "2026-11-02T09:06:19.708Z"
+  },
+  {
+    "id": "content-creator-freshers-1f5a",
+    "title": "Content Creator (Freshers)",
+    "location": "Vijayawada (on-site)",
+    "type": "Full-time",
+    "experience": "Freshers welcome",
+    "qualification": "Any graduate",
+    "openings": 1,
+    "summary": "Plan and create social media content for our clients and our own brand: ideas, scripts, captions, simple designs and on-camera content.",
+    "responsibilities": [
+      "Come up with content ideas and monthly post calendars for client brands",
+      "Write captions, short scripts and hooks for reels and posts",
+      "Shoot simple videos and photos on mobile when needed",
+      "Create post designs and stories using Canva",
+      "Track what performs well and suggest improvements"
+    ],
+    "requirements": [
+      "Active interest in Instagram, YouTube and current social media trends",
+      "Good written communication in English (Telugu is a plus)",
+      "Comfortable presenting ideas and being on camera",
+      "Creative, organised and able to meet deadlines"
+    ],
+    "skills": [
+      "Content writing",
+      "Instagram & YouTube",
+      "Canva",
+      "Scripting",
+      "Trend research"
+    ],
+    "niceToHave": [
+      "Basic video editing",
+      "Photography",
+      "Telugu content",
+      "Personal page or portfolio"
+    ],
+    "open": true,
+    "postedAt": "2026-11-02T09:06:19.708Z"
+  },
+  {
+    "id": "digital-marketing-specialist-37ad",
+    "title": "Digital Marketing Specialist",
+    "location": "Vijayawada (on-site)",
+    "type": "Full-time",
+    "experience": "Freshers welcome",
+    "qualification": "Any graduate (MBA / marketing certification is a plus)",
+    "openings": 1,
+    "summary": "Plan and run digital campaigns for our clients across Google, Meta and search, and report on results that bring them more enquiries.",
+    "responsibilities": [
+      "Set up and manage Meta (Facebook and Instagram) and Google Ads campaigns",
+      "Do keyword research and on-page SEO for client websites",
+      "Manage social media pages and posting schedules",
+      "Track leads, spend and results, and prepare simple monthly reports",
+      "Work with the design and content team on ad creatives"
+    ],
+    "requirements": [
+      "Good understanding of how social media and search advertising work",
+      "Comfortable with numbers, spreadsheets and reporting",
+      "Clear communication with clients and the team",
+      "Freshers with a certification or internship are welcome"
+    ],
+    "skills": [
+      "Meta Ads",
+      "Google Ads",
+      "SEO",
+      "Social media marketing",
+      "Google Analytics",
+      "Excel / Sheets"
+    ],
+    "niceToHave": [
+      "Google Ads certification",
+      "Meta Blueprint",
+      "Email marketing",
+      "Canva"
+    ],
+    "open": true,
+    "postedAt": "2026-11-02T09:06:19.708Z"
+  },
+  {
+    "id": "web-developer-react-nextjs",
+    "title": "Web Developer (React / Next.js)",
+    "location": "Vijayawada (on-site)",
+    "type": "Full-time",
+    "experience": "0–2 years",
+    "summary": "Build fast, search-ready business websites and web apps for our clients, working alongside our design and marketing team.",
+    "responsibilities": [
+      "Build responsive pages and features with React, Next.js and Tailwind CSS",
+      "Connect forms, CMS content and third-party APIs",
+      "Fix bugs and improve page speed on live client sites",
+      "Take part in weekly reviews with senior developers"
+    ],
+    "requirements": [
+      "Good working knowledge of HTML, CSS and JavaScript",
+      "Hands-on experience with React (projects or internships count)",
+      "Comfortable with Git and reading documentation",
+      "Clear written and spoken communication"
+    ],
+    "open": true,
+    "postedAt": "2026-10-24T10:49:41.114Z",
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Git"
+    ],
+    "niceToHave": [
+      "TypeScript",
+      "REST APIs",
+      "Basic SEO"
+    ],
+    "qualification": "B.Tech / B.Sc / MCA or equivalent",
+    "openings": 1
+  }
+]

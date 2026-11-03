@@ -1,0 +1,149 @@
+[
+  {
+    "id": "airpay",
+    "name": "Airpay",
+    "sector": "Fintech · Payments",
+    "logo": "airpay.png",
+    "addedAt": "2026-11-02T14:31:43.112Z"
+  },
+  {
+    "id": "sowers-ministry-99cc",
+    "name": "Sowers Ministry",
+    "sector": "Ministry",
+    "logo": "sowers-ministry-9212cd.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "savior-s-heart-beat-ministries-b321",
+    "name": "Savior's Heart Beat Ministries",
+    "sector": "Ministry",
+    "logo": "savior-s-heart-beat-ministries-017234.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "rp-associates-9689",
+    "name": "RP Associates",
+    "sector": "Architecture · Interiors",
+    "logo": "rp-associates-aaf2d9.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "psp-channel-a0d2",
+    "name": "PSP Channel",
+    "sector": "Media",
+    "logo": "psp-channel-a4adb8.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "arna-infra-projects-6b13",
+    "name": "Arna Infra Projects",
+    "sector": "Infrastructure",
+    "logo": "arna-infra-projects-25a90c.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "indian-dental-and-cosmetology-clinic-d995",
+    "name": "Indian Dental & Cosmetology Clinic",
+    "sector": "Healthcare",
+    "logo": "indian-dental-and-cosmetology-clinic-76a14c.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "dhanra-dental-3ff5",
+    "name": "Dhanra Dental",
+    "sector": "Healthcare",
+    "logo": "dhanra-dental-50dec9.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "codewear-1b48",
+    "name": "Codewear",
+    "sector": "Hospital textiles",
+    "logo": "codewear-3ea982.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "sv-wellness-314e",
+    "name": "SV Wellness",
+    "sector": "Health · Wellness",
+    "logo": "sv-wellness-8f3309.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "fgbmfi-ac30",
+    "name": "FGBMFI",
+    "sector": "Ministry",
+    "logo": "fgbmfi-1cf1a0.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "hosanna-daiva-sandesalu-5d93",
+    "name": "Hosanna Daiva Sandesalu",
+    "sector": "Ministry · Media",
+    "logo": "hosanna-daiva-sandesalu-42356a.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "icm-jubilee-english-medium-school-1c7b",
+    "name": "ICM Jubilee English Medium School",
+    "sector": "Education",
+    "logo": "icm-jubilee-english-medium-school-daf3f3.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "living-hope-361d",
+    "name": "Living Hope",
+    "sector": "Ministry",
+    "logo": "living-hope-3fdb32.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "yiolet-couture-fb1d",
+    "name": "Yiolet Couture",
+    "sector": "Fashion",
+    "logo": "yiolet-couture-0a6c05.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "prepp365-2a0e",
+    "name": "Prepp365",
+    "sector": "Education",
+    "logo": "prepp365-f31a63.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "st-john-s-school-4f6d",
+    "name": "St. John's School",
+    "sector": "Education",
+    "logo": "st-john-s-school-8e98e6.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "vijayawada-car-travels-49a2",
+    "name": "Vijayawada Car Travels",
+    "sector": "Travel",
+    "logo": "vijayawada-car-travels-219b41.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "yogi-s-little-italy-c109",
+    "name": "Yogi's Little Italy",
+    "sector": "Restaurant",
+    "logo": "yogi-s-little-italy-e36047.png",
+    "addedAt": "2026-11-02T14:52:23.174Z"
+  },
+  {
+    "id": "sriyan-group-61a6",
+    "name": "Sriyan Group",
+    "sector": "Real estate",
+    "logo": "sriyan-group-de6d22.png",
+    "addedAt": "2026-11-02T14:56:20.383Z"
+  },
+  {
+    "id": "gem-group-projects-f703",
+    "name": "GEM Group Projects",
+    "sector": "Real estate · Construction",
+    "logo": "gem-group-projects-8dd142.png",
+    "addedAt": "2026-11-02T17:35:04.142Z"
+  }
+]
