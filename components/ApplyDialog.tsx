@@ -57,7 +57,7 @@ export function ApplyDialog({ jobId, jobTitle, className = "" }: { jobId: string
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 30, scale: 0.98 }}
               transition={{ type: "spring", stiffness: 320, damping: 30 }}
-              className="relative max-h-[92svh] w-full max-w-2xl overflow-y-auto rounded-t-3xl bg-white p-6 shadow-2xl sm:rounded-3xl sm:p-8"
+              className="relative max-h-[calc(92svh/var(--z))] w-full max-w-2xl overflow-y-auto rounded-t-3xl bg-white p-6 shadow-2xl sm:rounded-3xl sm:p-8"
             >
               <span aria-hidden className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-footer-from via-cobalt to-sky" />
               <div className="flex items-start justify-between gap-4">

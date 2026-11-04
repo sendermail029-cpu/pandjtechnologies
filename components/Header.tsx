@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Logo } from "./Logo";
 import VenomButton from "./originkit/ui/venom-button";
 import { company, services, testingPartners } from "@/lib/site";
 import { serviceIcons, testCenterIcon } from "@/lib/service-icons";
+import { usePagePath } from "@/lib/use-page-path";
 
 const companyLinks = [
   { href: "/about", label: "About us", text: "Who we are, our mission and values.", icon: "M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11zM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" },
@@ -303,7 +304,7 @@ function MobileMenu({ pathname, onClose }: { pathname: string; onClose: () => vo
 }
 
 export function Header() {
-  const pathname = usePathname();
+  const pathname = usePagePath();
   const router = useRouter();
   const [open, setOpen] = useState(false);
   // the liquid button is hidden on phones, so only load and run it on wider screens
@@ -325,7 +326,7 @@ export function Header() {
 
   return (
     <>
-      <header data-dark={dark} data-path={pathname} className={`group/header relative z-40 ${dark ? "bg-[#060d18]" : "bg-white"}`}>
+      <header data-dark={dark} className={`group/header relative z-40 ${dark ? "bg-[#060d18]" : "bg-white"}`}>
         <div className="mx-auto flex h-[72px] max-w-[83rem] items-center justify-between px-6">
           <Logo badge={dark} />
 

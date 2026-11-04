@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { assistantFallback, assistantTopics, localAnswer } from "@/lib/assistant";
 import { company } from "@/lib/site";
+import { usePagePath } from "@/lib/use-page-path";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -27,7 +27,7 @@ function Bot({ className = "h-7 w-7" }: { className?: string }) {
 // A chat assistant in the corner of every page. Uses Claude through /api/chat; if that isn't set up,
 // it answers the common topics itself and points people to the team.
 export function AiAssistant() {
-  const pathname = usePathname();
+  const pathname = usePagePath();
   const reduce = useReducedMotion();
   const [open, setOpen] = useState(false);
   const [msgs, setMsgs] = useState<Msg[]>([]);
@@ -181,7 +181,7 @@ export function AiAssistant() {
           <motion.div
             role="dialog"
             aria-label="Chat with the P & J assistant"
-            className="fixed inset-x-3 bottom-24 z-[60] flex max-h-[min(620px,calc(100svh-120px))] flex-col overflow-hidden rounded-[24px] bg-white shadow-[0_30px_80px_-20px_rgba(15,29,51,0.5)] ring-1 ring-black/5 sm:inset-x-auto sm:right-5 sm:w-[390px]"
+            className="fixed inset-x-3 bottom-24 z-[60] flex max-h-[min(620px,calc(100svh/var(--z)-120px))] flex-col overflow-hidden rounded-[24px] bg-white shadow-[0_30px_80px_-20px_rgba(15,29,51,0.5)] ring-1 ring-black/5 sm:inset-x-auto sm:right-5 sm:w-[390px]"
             initial={reduce ? false : { opacity: 0, y: 20, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.97 }}

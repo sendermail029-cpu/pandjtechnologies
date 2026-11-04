@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { usePathname } from "next/navigation";
 import { animate, inView } from "framer-motion";
+import { usePagePath } from "@/lib/use-page-path";
 
 // where each reveal starts from (the markup keeps the familiar data-aos names)
 const FROM: Record<string, { x?: number; y?: number }> = {
@@ -21,7 +21,7 @@ const FROM: Record<string, { x?: number; y?: number }> = {
  * client navigation) never strands anything hidden.
  */
 export function MotionReveal() {
-  const pathname = usePathname();
+  const pathname = usePagePath();
 
   useEffect(() => {
     const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

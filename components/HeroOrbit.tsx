@@ -41,7 +41,7 @@ export function HeroOrbit({ nodes, active }: { nodes: Node[]; active: number }) 
   });
 
   return (
-    <div aria-hidden className="relative mx-auto aspect-square w-full max-w-[min(700px,calc(100svh-130px))]">
+    <div aria-hidden className="relative mx-auto aspect-square w-full max-w-[min(700px,calc(100svh/var(--z)-130px))]">
       {/* glow in the active service's colour */}
       <motion.div
         key={lit.slug}

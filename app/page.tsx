@@ -51,7 +51,7 @@ export default async function Home() {
   return (
     <>
       {/* hero */}
-      <section className="relative isolate overflow-hidden bg-[#060d18] px-6 pb-14 pt-8 text-white sm:pt-12 lg:flex lg:min-h-[calc(100svh-72px)] lg:items-center lg:pb-16 lg:pt-10">
+      <section className="relative isolate overflow-hidden bg-[#060d18] px-6 pb-14 pt-8 text-white sm:pt-12 lg:flex lg:min-h-[calc(100svh/var(--z)-72px)] lg:items-center lg:pb-16 lg:pt-10">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgb(255_255_255/0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgb(255_255_255/0.035)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_60%_40%,black_20%,transparent_75%)]" />
           <div className="footer-glow absolute -left-40 bottom-0 h-[480px] w-[520px] rounded-full bg-cobalt/30 blur-3xl" />

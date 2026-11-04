@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { usePagePath } from "@/lib/use-page-path";
 
 const ease = [0.76, 0, 0.24, 1] as const;
 
@@ -12,7 +12,7 @@ const dots = ["#0090a8", "#0060a8", "#006030", "#ffc030", "#004878", "#f07818", 
 // Between pages: a navy panel sweeps up, the P & J mark appears in its turning ring with the services orbiting it,
 // then the panel lifts away once the next page is in place.
 export function PageTransition() {
-  const pathname = usePathname();
+  const pathname = usePagePath();
   const reduce = useReducedMotion();
   const [show, setShow] = useState(false);
   const shownAt = useRef(0);

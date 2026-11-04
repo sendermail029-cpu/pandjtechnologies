@@ -30,6 +30,27 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Big monitors and projectors: scale the whole site up so it fills the screen like it does on a laptop,
+   instead of sitting small in the middle. Laptops, tablets and phones are unchanged. */
+/* --z: the zoom in use, so heights based on the screen (svh/vh) can divide it back out */
+:root { --z: 1; }
+@media (min-width: 1700px) {
+  html { zoom: 1.12; }
+  :root { --z: 1.12; }
+}
+@media (min-width: 1900px) {
+  html { zoom: 1.25; }
+  :root { --z: 1.25; }
+}
+@media (min-width: 2300px) {
+  html { zoom: 1.45; }
+  :root { --z: 1.45; }
+}
+@media (min-width: 2800px) {
+  html { zoom: 1.75; }
+  :root { --z: 1.75; }
+}
+
 /* scroll reveals (components/MotionReveal.tsx).
    1. Page load: an inline script adds .aos-intro to <html>, so everything is visible at once and fades in with CSS,
       without waiting for the JavaScript.

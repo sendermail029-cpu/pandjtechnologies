@@ -7,7 +7,7 @@ import { LookingEyes } from "./LookingEyes";
 // Careers hero: deep navy like the footer, over a twisting ribbon of fine lines in brand blues
 export function CareersHero({ apply }: { jobCount?: number; apply: string }) {
   return (
-    <section className="relative isolate flex flex-col overflow-hidden bg-[#060d18] px-6 pb-14 pt-10 sm:pb-16 sm:pt-14 lg:min-h-[calc(100svh-73px)] lg:justify-center lg:pb-16">
+    <section className="relative isolate flex flex-col overflow-hidden bg-[#060d18] px-6 pb-14 pt-10 sm:pb-16 sm:pt-14 lg:min-h-[calc(100svh/var(--z)-73px)] lg:justify-center lg:pb-16">
       <div className="absolute inset-0 -z-10">
         {/* drifting cobalt glows and a faint grid, like the footer */}
         <div aria-hidden className="footer-glow absolute -left-32 bottom-0 h-[460px] w-[460px] rounded-full bg-cobalt/40 blur-3xl" />
@@ -21,7 +21,7 @@ export function CareersHero({ apply }: { jobCount?: number; apply: string }) {
       </div>
 
       {/* desktop: the revolving globe on the right */}
-      <GlobeOrbit spin className="absolute right-[4%] top-1/2 hidden h-[min(520px,70vh)] w-[min(520px,70vh)] -translate-y-1/2 lg:block xl:right-[8%]" />
+      <GlobeOrbit spin className="absolute right-[4%] top-1/2 hidden h-[min(520px,calc(70vh/var(--z)))] w-[min(520px,calc(70vh/var(--z)))] -translate-y-1/2 lg:block xl:right-[8%]" />
 
       <div className="pointer-events-none mx-auto w-full max-w-[83rem] [&_a]:pointer-events-auto">
         <div className="min-w-0 max-w-2xl">
